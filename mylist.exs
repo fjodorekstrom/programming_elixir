@@ -34,4 +34,15 @@ defmodule MyList do
   defp _ismax(head, value) when head < value do
     value
   end
+
+  def caesar([], n) do
+    []
+  end
+
+  def caesar([ head | tail ], n) do
+    [ adjust_to_char(head + n) | caesar(tail, n) ]
+  end
+
+  def adjust_to_char(value) when value > ?\z, do: rem(value, ?z) + ?\1
+  def adjust_to_char(value),                  do: value
 end
